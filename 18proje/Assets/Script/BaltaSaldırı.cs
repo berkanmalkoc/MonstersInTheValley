@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class BaltaSaldırı : MonoBehaviour
 {
-
+    [SerializeField] GameObject baltaCollider;
     public Animator baltaAnim;
+    [SerializeField] float colliderkapamasüresi;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,11 +20,21 @@ public class BaltaSaldırı : MonoBehaviour
         if (Input.GetKey(KeyCode.Mouse0))
         {
             baltaAnim.SetBool("baltaSaldir", true);
+            baltaCollider.SetActive(true);
+            StartCoroutine(BaltaColliderKapa());
         }
         else
         {
             baltaAnim.SetBool("baltaSaldir", false);
+            
         }
+
+    }
+
+    IEnumerator BaltaColliderKapa()
+    {
+        yield return new WaitForSecondsRealtime(colliderkapamasüresi);
+        baltaCollider.SetActive(false);
 
     }
 }

@@ -8,6 +8,8 @@ TagManager:
   - Object
   - Enemy
   - baltaal
+  - mp5al
+  - balta
   layers:
   - Default
   - TransparentFX

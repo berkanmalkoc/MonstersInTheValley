@@ -354,6 +354,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Script/BaltaSaldırı.cs"
+"Assets/Script/CanavarCan.cs"
 "Assets/Script/GamePlayScript.cs"
 "Assets/serkan/EffectExamples/Misc Effects/Scripts/SpawnEffect.cs"
 "Assets/serkan/EffectExamples/Shared/Ramps/Runtime/RampAsset.cs"

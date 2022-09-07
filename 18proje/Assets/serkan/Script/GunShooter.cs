@@ -135,6 +135,8 @@ public class GunShooter : MonoBehaviour
             if (hit.transform.gameObject.CompareTag("Enemy"))
             {
                 Instantiate(gunEffect[1], hit.point, Quaternion.LookRotation(hit.normal));
+                CanavarCan canavarcan = hit.transform.gameObject.GetComponent<CanavarCan>();
+                canavarcan.CanAzaltma(10);
             }
             else if (hit.transform.gameObject.CompareTag("Object"))
             {

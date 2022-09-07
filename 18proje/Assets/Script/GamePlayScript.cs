@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class GamePlayScript : MonoBehaviour
 {
-    #region Kol Silahlar
+    #region Kol ve Silahlar
     [SerializeField] GameObject kolBalta;
     [SerializeField] GameObject kolMp5;
     #endregion
 
     [SerializeField] GameObject pressF;
 
-    bool baltaalýnabilir = false;
+    bool mp5envanterde=false;
+    bool baltaenvanterde = false;
+
+    
 
 
     // Start is called before the first frame update
@@ -23,14 +26,21 @@ public class GamePlayScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
-            if (baltaalýnabilir)
+            if (baltaenvanterde)
             {
                 BaltaActive();
             }
         }
-        
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            if (mp5envanterde)
+            {
+                Mp5Active();
+            }
+        }
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -38,7 +48,34 @@ public class GamePlayScript : MonoBehaviour
         if(other.gameObject.tag== "baltaal")
         {
             pressF.SetActive(true);
-            baltaalýnabilir = true;
+            
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+              
+                Destroy(other.gameObject);
+                BaltaActive();
+                pressF.SetActive(false);
+                baltaenvanterde = true;
+
+                
+            }
+        }
+
+        if (other.gameObject.tag == "mp5al")
+        {
+            pressF.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                mp5envanterde = true;
+                Destroy(other.gameObject);
+                Mp5Active();
+                pressF.SetActive(false);
+
+
+
+            }
+
         }
     }
 
@@ -47,14 +84,21 @@ public class GamePlayScript : MonoBehaviour
         if (other.gameObject.tag == "baltaal")
         {
             pressF.SetActive(false);
-            baltaalýnabilir = false;
+        }
+
+        if (other.gameObject.tag == "mp5al")
+        {
+            pressF.SetActive(false);
         }
     }
 
+
+
     void BaltaActive()
     {
-        kolBalta.SetActive(true);
         kolMp5.SetActive(false);
+        kolBalta.SetActive(true);
+        
     }
 
     void Mp5Active()
